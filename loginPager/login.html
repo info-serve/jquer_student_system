@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生管理登录页面</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+      *{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-decoration: none;
+      }
+      html,body{
+          position:fixed;
+          width: 100%;
+          height: 100%;
+          background-image: url(../img/bg1.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      .content{
+          height: 100%;
+      }
+      .wrapper{
+            position: relative;
+            top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 600px;
+            height: 370px;
+            background-color: #eee;
+            border-radius: 15px;
+        }
+        .heade{
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background-color: rgb(152, 188, 221);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .title {
+               position: absolute;
+                top: 0px;
+               left: 50%;
+               height: 100%;
+               line-height: 50px;
+               width: 300px;
+               margin-left: -150px;
+               font-size: 30px;
+               color: #222;
+              text-align: center;
+        }
+        .inputContent{
+            width: 100%;
+            height: 300px;
+            margin-top: 35px;
+        }
+        .input {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 440px;
+            height: 40px;
+            padding: 5px 24px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .register_btn {
+            position: relative;
+            display: block;
+            width: 490px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgb(34, 175, 6);
+            color: white;
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+            margin-top: 30px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .register_link {
+           position: absolute;
+            bottom: 50px;
+            right: 60px;
+            width: 70px;
+            height: 35px;
+            line-height: 35px;
+            color: rgb(128, 128, 128);
+            cursor: pointer;
+        }
+        .register_link:hover{
+            color: rgb(34, 10, 250);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+       <div class="wrapper">
+          <div class="heade">
+          <div class="title">学生系统登录界面</div>
+          </div>
+            <div class="inputContent">
+            <input type="text" class="input" placeholder="用&nbsp;户&nbsp;名" id="account" title="请输入用户名"/>
+            <input type="password" class="input" placeholder="密&nbsp;&nbsp;&nbsp;&nbsp;码" id="password" title="请输入密码"/>
+            <div class="register_btn" onclick="loginJquery()" onkeydown="enter()" title="登录">登录</div>
+            <div class="register_link" onclick="javascript:location.href='../registerPager/register.html'" title="快速注册">快速注册</div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+      function loginJquery(){
+        var account =document.getElementById('account').value;
+        var password = document.getElementById("password").value;
+        $.ajax({
+         type:'post',
+         url:'http://open.duyiedu.com/api/student/stuLogin',
+         dataType:'json',
+         data:{
+             appkey:'xiaobaobao_1570109455962 ',
+            'account':account,
+            'password':password
+         },
+         success:function(res){
+             if(res.status =='success'){
+                alert(res.msg)
+                location.href = '../student_info_system.html'
+             }else{
+                 alert(res.msg);
+             }
+         }
+     })
+   }
+    </script>
+   
+</body>
+</html>
