@@ -1,5 +1,5 @@
 # jquery_student_system
 JQUERY VERSION OF STUDENT MANAGEMENT INFORMATION  SYSTEM 
-## 该学生管理系统与后端交互
-   - 里面所需要的接口文档来源于 <<==== https://developer.duyiedu.com ===>>> 
-   - 需要注册获取appkey。
+## The student management system interacts with the back end
+   - The required interface documentation comes from  https://developer.duyiedu.com 
+   - Need to register to get appkey。
